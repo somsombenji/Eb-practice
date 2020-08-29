@@ -1,0 +1,33 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>자소설 닷컴</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' href='{%static 'index.css'%}'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div id="nav">
+        <span class="logo" onclick="location.href='/'">📝자소설 닷컴</span>
+        <div id="profile">
+            {%if user.is_authenticated%}
+            {{user}}
+            <div class="btn" onclick="location.href='/accounts/logout/'">로그아웃</div>
+
+            {%else%}
+            <div class="btn" onclick="location.href='/accounts/signup/'">회원가입하기</div>
+            <div class="btn" onclick="location.href='/accounts/login/'">로그인</div>
+            {%endif%}
+    </div>
+    </div>
+{%block contents%}
+{%endblock%}
+<footer>
+    2020.08.29 <br>
+    자소설닷컴 프로젝트
+</footer>
+</body>
+</html>

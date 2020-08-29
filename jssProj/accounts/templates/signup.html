@@ -1,0 +1,14 @@
+{%extends 'tem.html'%}
+{%block contents%}
+<div class="create_box">
+    <h2>회원가입 페이지</h2>
+
+    <form method="POST" action="">
+        {%csrf_token%}
+        <table>
+            {{regi_form.as_table}}
+        </table><br>
+        <input type="submit" value="회원가입">
+    </form>
+</div>
+{%endblock%}

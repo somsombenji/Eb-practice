@@ -1,0 +1,41 @@
+{%extends 'tem.html'%}
+{%block contents%}
+<div class="detail_box">
+    <h2>자소서 제목: {{detail_jss.title}}</h2>
+    <p><span class="author">{{detail_jss.author}}</span>님의 자소서입니다. | {{detail_jss.upload_at|date:"Y-m-d"}}</p>
+    {%if user == detail_jss.author %}
+    <a href="{%url 'delete' detail_jss.id%}">삭제</a>
+    <a href="{%url 'update' detail_jss.id%}">수정</a>
+    {%endif%}
+    <div class="jc">
+        <p class="j_content">자소서 내용:<br><br>
+            {{detail_jss.content|linebreaksbr}}</p>
+    </div>
+
+
+    <br>
+
+    {%if user.is_authenticated%}
+    댓글을 남겨보세요.
+    <form method="POST" action="{% url 'createComment' detail_jss.id %}">
+        {%csrf_token%}
+        {{comment_form}}
+        <input type="submit" value="전송">
+    </form>
+    
+    {%else%}
+    로그인 후 댓글을 남겨보세요.
+    {%endif%}
+
+
+    {%for comment in detail_jss.comment_set.all %}
+    <h4>💗{{comment.author}}</h4>
+    <p>{{comment.content}}</p>
+    {%if user == comment.author%}
+    <a href="{%url 'deleteComment' detail_jss.id comment.id%}">삭제</a><br>
+    {%endif%}
+    <hr>
+    
+    {%endfor%}
+</div>
+{%endblock%}

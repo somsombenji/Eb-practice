@@ -1,0 +1,20 @@
+{%extends 'tem.html'%}
+{%load static%}
+{%block contents%}
+<center>
+    
+<div class="create_box">
+    <h3>📂당신의 자소서를 적어주세요.</h3><br><br>
+    <form method="POST" action="">
+        {%csrf_token%}
+        <table>
+            {{jss_form.as_table}}
+        </table>
+        <p class="count">글자수 (공백포함):&nbsp;&nbsp; <span class="counted_text"></span></p>
+        <input type="submit" value="확인">
+    </form>
+
+    <script src='{%static "js/count.js" %}'></script>
+</div>
+</center>
+{%endblock%}

@@ -1,0 +1,25 @@
+{%extends 'tem.html'%}
+{%block contents%}
+<div class="box">
+    <div class="make_jss" onclick="location.href='/create/'">
+        <div class="plus_btn">
+                +
+        </div>
+        <p class="create">자기소개서 작성</p>
+    </div>
+    <br>
+    <div class="btn" onclick="location.href='/myindex/'">내 자소서만 보기</div> &nbsp;&nbsp;
+    <div class="btn" onclick="location.href='/'">모든 자소서 보기</div><br><br>
+    {%if user.is_authenticated%}
+    
+    {%endif%}
+
+    {%for jss in all_jss%}
+    <div class="all_jss" onclick="location.href='/detail/{{jss.id}}'">
+        <h4 class="title">{{jss.title}}</h4>
+        <p>{{jss.summaryB}}</p>
+        <p>{{jss.upload_at|date:"Y-m-d"}}</p>
+    </div>
+    {%endfor%}
+</div>
+{%endblock%}

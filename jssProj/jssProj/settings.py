@@ -26,7 +26,7 @@ SECRET_KEY = 'g^7bj1gr!s3lawl+t9tw!3vw6tlvzgo)2-6175@17&$o$j(h5w'
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1',
-                ]
+                'kong-env.eba-jd4yiea3.us-west-2.elasticbeanstalk.com',]
 
 
 # Application definition
